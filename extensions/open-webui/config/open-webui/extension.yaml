@@ -1,0 +1,60 @@
+apiVersion: kubesphere.io/v1alpha1
+name: open-webui
+version: 0.6.18
+displayName:
+  zh: Open WebUI
+  en: Open WebUI
+description:
+  zh: Open WebUI 是一个可扩展、功能丰富且用户友好的自托管 AI 平台，旨在完全离线运行。它支持各种 LLM 运行器（例如Ollama）和与OpenAI 兼容的 API，并内置RAG 推理引擎，使其成为强大的 AI 部署解决方案。
+  en: Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, making it a powerful AI deployment solution.
+category: ai-machine-learning
+keywords:
+  - ai-machine-learning
+home: https://kubesphere.io
+sources:
+  - https://github.com/kubesphere
+kubeVersion: ">=1.19.0-0"
+ksVersion: ">=4.2.0-0"
+maintainers:
+  - name: "kubesphere"
+    email: "kubesphere.yunify.com"
+    url: "https://kubesphere.io/"
+provider:
+  zh:
+    name: "kubesphere"
+    email: "kubesphere.yunify.com"
+    url: "https://kubesphere.io/"
+  en:
+    name: "kubesphere"
+    email: "kubesphere.yunify.com"
+    url: "https://kubesphere.io/"
+icon: ./static/favicon.png
+screenshots:
+  - ./static/screenshots/screenshot.png
+dependencies:
+  - name: open-webui
+    tags:
+    - extension
+# installationMode describes how to install subcharts, it can be HostOnly or Multicluster.
+# In Multicluster mode, the subchart with tag `extension` will only be deployed to the host cluster,
+# and the subchart with tag `agent` will be deployed to all selected clusters.
+installationMode: HostOnly
+# Custom namespace example: If not specified, it will be installed in the namespace named extension-{name}.
+#namespace: ""
+# external dependencies example
+#externalDependencies:
+#  - name: a
+#    type: extension
+#    version: ">= 2.6.0"
+#    required: true
+#  - name: b
+#    type: extension
+#    version: ">= 2.2.0"
+#    required: true
+# Add init containers to the extension installation job to execute custom tasks (eg: CRDs upgrade).
+# Support unified or separate configuration of init container image for each stage.
+#annotations:
+#  executor-hook-image.kubesphere.io: ...
+#  executor-hook-image.kubesphere.io/install: ...
+#  executor-hook-image.kubesphere.io/upgrade: ...
+#  executor-hook-image.kubesphere.io/uninstall: ...

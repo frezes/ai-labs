@@ -1,2 +1,3 @@
-# ai-labs
-AI Laboratory for KubeSphere Agentic Extension
+# AI-Labs
+
+AI Labs for KubeSphere Extension.

@@ -1,0 +1,12 @@
+{
+  "name": "open-webui-shortcut",
+  "version": "1.0.0",
+  "private": true,
+  "description": "open-webui shortcut",
+  "homepage": "",
+  "author": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ]
+}
