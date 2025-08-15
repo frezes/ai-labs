@@ -29,8 +29,6 @@ provider:
     email: "kubesphere.yunify.com"
     url: "https://kubesphere.io/"
 icon: ./static/favicon.png
-screenshots:
-  - ./static/screenshots/screenshot.png
 dependencies:
   - name: open-webui
     tags:
