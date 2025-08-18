@@ -6,7 +6,7 @@
 
 "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, making it a powerful AI deployment solution."
 
-![Open WebUI Demo](./image/demo.gif)
+![Open WebUI Demo](./docs/image/demo.gif)
 
 总的来说，Open WebUI 是一个 User-friendly AI Interface (Supports Ollama, OpenAI API, ...)，更多内容可参考 [Open WebUI 官方文档](https://docs.openwebui.com/)
 
@@ -51,7 +51,7 @@ open-webui:
 
 部署完成后，可以通过 KubeSphere 的 "组件坞" 中的 ""Open WebUI" 进行访问。
 
-![deploy](./image/deploy-open-webui.gif)
+![deploy](./docs/image/deploy-open-webui.gif)
 ### 安装 Open WebUI 扩展组件并接入 KubeSphere  账户
 
 Open WebUI 提供了非常友好的 [SSO 接入](https://docs.openwebui.com/features/sso/) , 而 KubeSphere 也可以[作为 OIDC 身份提供者](https://docs.kubesphere.com.cn/v4.2.0/04-platform-management/05-platform-settings/04-ks-as-oidc-identity-provider/)，那么，结合起来，就可以实现通过 KubeSphere 账户进行登录 Open WebUI。
