@@ -49,22 +49,32 @@ open-webui:
     nodePort: "32678"
 ```
 
+部署完成后，可以通过 KubeSphere 的 "组件坞" 中的 ""Open WebUI" 进行访问。
+
 ![deploy](./image/deploy-open-webui.gif)
 ### 安装 Open WebUI 扩展组件并接入 KubeSphere  账户
 
+Open WebUI 提供了非常友好的 [SSO 接入](https://docs.openwebui.com/features/sso/) , 而 KubeSphere 也可以[作为 OIDC 身份提供者](https://docs.kubesphere.com.cn/v4.2.0/04-platform-management/05-platform-settings/04-ks-as-oidc-identity-provider/)，那么，结合起来，就可以实现通过 KubeSphere 账户进行登录 Open WebUI。
+
+
+首先，请确保已安装 KubeSphere，并配置了 portal.hostname 和 portal.port，请参考[作为 OIDC 身份提供者](https://docs.kubesphere.com.cn/v4.2.0/04-platform-management/05-platform-settings/04-ks-as-oidc-identity-provider/) 步骤进行配置。
+
+然后在 KubeSphere 上安装 Open WebUI 扩展组件，进行以下配置，请根据实际情况修改配置文件中的 IP 地址和端口。
+
+
 ```yaml
 open-webui-helper:
-  openWebUIUrl: "http://172.31.19.4:32678"
+  openWebUIUrl: "http://172.31.19.4:32678"              #-- The URL of the Open WebUI
 
   kubesphereAsOIDCProvider:
-    enabeld: true
+    enabeld: true                                       #-- Enable KubeSphere as OIDC Provider
 
 open-webui:
   ollama:
     enabled: true
   service:
     type: NodePort
-    nodePort: "32678"
+    nodePort: "32678"                                   #-- Service NodePort to expose Open WebUI pods to cluster
   extraEnvVars:
     - name: OAUTH_TOKEN_ENDPOINT_AUTH_METHOD
       value: client_secret_post
@@ -76,10 +86,16 @@ open-webui:
       clientId: "open-webui"
       clientSecret: "open-webui"
       clientExistingSecret: ""
-      providerUrl: "http://172.31.19.4:30880/.well-known/openid-configuration"
+      providerUrl: "http://172.31.19.4:30880/.well-known/openid-configuration"              #-- KubeSphere OIDC Provider URL
       providerName: "kubesphere"
       scopes: "openid email profile"
 ```
 
+配置完成后，即可使用 KubeSphere 账户进行登录 Open WebUI。
 
-### 高可用部署
+### 高可用部署建议
+
+- 将 Open WebUI 的数据库存储到外部数据库中，如 PostgreSQL。
+- 部署 Redis 作为缓存，用于多副本 Open WebUI 通信， 以保证会话一致性等。
+- 部署多个 Open WebUI 副本，以实现高可用。
+- 可考虑 ollama 单独部署
