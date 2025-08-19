@@ -1,19 +1,19 @@
 apiVersion: kubesphere.io/v1alpha1
-name: open-webui
-version: 0.6.18
+name: jupyterhub
+version: 5.3.0
 displayName:
-  zh: Open WebUI
-  en: Open WebUI
+  zh: JupyterHub
+  en: JupyterHub
 description:
-  zh: Open WebUI 是一个可扩展、功能丰富且用户友好的自托管 AI 平台，旨在完全离线运行。它支持各种 LLM 运行器（例如Ollama）和与OpenAI 兼容的 API，并内置RAG 推理引擎，使其成为强大的 AI 部署解决方案。
-  en: Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, making it a powerful AI deployment solution.
+  zh: Multi-user server for Jupyter notebooks.
+  en: Multi-user server for Jupyter notebooks.
 category: ai-machine-learning
 keywords:
   - ai-machine-learning
 home: https://kubesphere.io
 sources:
   - https://github.com/kubesphere
-kubeVersion: ">=1.19.0-0"
+kubeVersion: ">=1.28.0-0"
 ksVersion: ">=4.2.0-0"
 maintainers:
   - name: "kubesphere"
@@ -23,14 +23,14 @@ provider:
   zh:
     name: "kubesphere"
     email: "kubesphere@yunify.com"
-    url: "https://kubesphere.com.cn/"
+    url: "https://kubesphere.io/"
   en:
     name: "kubesphere"
     email: "kubesphere@yunify.com"
     url: "https://kubesphere.io/"
-icon: ./static/favicon.png
+icon: ./static/hublogo.svg
 dependencies:
-  - name: open-webui
+  - name: jupyterhub
     tags:
     - extension
 # installationMode describes how to install subcharts, it can be HostOnly or Multicluster.
