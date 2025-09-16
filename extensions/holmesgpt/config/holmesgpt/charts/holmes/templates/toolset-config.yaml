@@ -1,0 +1,14 @@
+{{- if .Values.toolsets | not | empty }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custom-toolsets-configmap
+  namespace: {{ .Release.Namespace }}
+data:
+  custom_toolset.yaml: |-
+    toolsets: {{ toYaml .Values.toolsets | nindent 6 }}
+    mcp_servers: {{ toYaml .Values.mcp_servers | nindent 6 }}
+  model_list.yaml: |-
+    {{ .Values.modelList | toYaml | nindent 4 }}
+
+{{- end }}
