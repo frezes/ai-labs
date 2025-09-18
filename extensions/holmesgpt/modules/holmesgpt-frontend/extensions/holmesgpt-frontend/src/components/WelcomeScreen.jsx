@@ -49,21 +49,12 @@ const SuggestionsContainer = styled.div`
   margin-top: 20px;
 `;
 
-const SuggestionCard = styled.button`
+const SuggestionCard = styled.div`
   background: #f8f9fa;
   border: 1px solid #e9ecef;
   border-radius: 12px;
   padding: 20px;
   text-align: left;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: #e9ecef;
-    border-color: #007AFF;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
 `;
 
 const SuggestionTitle = styled.div`
@@ -81,20 +72,20 @@ const SuggestionDescription = styled.div`
 
 const suggestions = [
   {
-    title: "解释 Kubernetes 概念",
-    description: "了解 Pod、Service、Deployment 等核心概念"
+    title: "检查 Kubernetes 资源状态",
+    description: "使用 kubectl 命令查询集群中的各种资源状态"
   },
   {
-    title: "故障排查指导",
-    description: "获取应用程序和集群问题的诊断建议"
+    title: "分析应用日志",
+    description: "获取 Pod 日志并分析应用运行状态和错误信息"
   },
   {
-    title: "最佳实践建议",
-    description: "学习云原生应用的部署和管理最佳实践"
+    title: "查询监控指标",
+    description: "查询 Prometheus 监控指标和告警规则状态"
   },
   {
-    title: "配置文件示例",
-    description: "获取常用的 YAML 配置文件模板"
+    title: "排查系统性能问题",
+    description: "分析系统性能瓶颈和应用故障原因"
   }
 ];
 
@@ -108,8 +99,7 @@ export const WelcomeScreen = ({ onSuggestionClick }) => {
       <div>
         <WelcomeTitle>欢迎使用 HolmesGPT</WelcomeTitle>
         <WelcomeSubtitle>
-          我是您的云原生智能助手，专门帮助您解决 Kubernetes 和容器编排相关的问题。
-          无论是概念解释、故障排查还是最佳实践，我都能为您提供专业的指导。
+          我是 HolmesGPT，一款专注云原生与 Kubernetes 环境的 AI 智能代理，提供快速、专业的一站式故障诊断与运维支持
         </WelcomeSubtitle>
       </div>
 
@@ -117,13 +107,16 @@ export const WelcomeScreen = ({ onSuggestionClick }) => {
         {suggestions.map((suggestion, index) => (
           <SuggestionCard
             key={index}
-            onClick={() => onSuggestionClick?.(suggestion.title)}
           >
             <SuggestionTitle>{suggestion.title}</SuggestionTitle>
             <SuggestionDescription>{suggestion.description}</SuggestionDescription>
           </SuggestionCard>
         ))}
       </SuggestionsContainer>
+
+      <div style={{ marginTop: '24px', color: '#1d1d1f', fontSize: '16px', fontWeight: '500' }}>
+        有什么问题需要我帮助解决吗？
+      </div>
     </WelcomeContainer>
   );
 };

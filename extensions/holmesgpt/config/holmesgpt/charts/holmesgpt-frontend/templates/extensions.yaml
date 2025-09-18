@@ -1,0 +1,10 @@
+apiVersion: extensions.kubesphere.io/v1alpha1
+kind: JSBundle
+metadata:
+  name: {{ include "holmesgpt-frontend.fullname" . }}-js-bundle
+spec:
+  rawFrom:
+    url: http://{{ include "holmesgpt-frontend.fullname" . }}.{{ .Release.Namespace }}.svc/dist/holmesgpt-frontend/index.js
+status:
+  state: Available
+  link: /dist/{{ include "holmesgpt-frontend.fullname" . }}/index.js

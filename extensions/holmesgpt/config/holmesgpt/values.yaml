@@ -58,3 +58,11 @@ holmes:
   priorityClassName: ""
 
   modelList: {}
+
+holmesgpt-fronted:
+  image:
+    registry: docker.io
+    repository: frezes/holmesgpt-frontend
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"

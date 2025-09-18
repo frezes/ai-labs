@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "open-webui-helper.name" -}}
+{{- define "holmesgpt-frontend.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "open-webui-helper.fullname" -}}
+{{- define "holmesgpt-frontend.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "open-webui-helper.chart" -}}
+{{- define "holmesgpt-frontend.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "open-webui-helper.labels" -}}
-helm.sh/chart: {{ include "open-webui-helper.chart" . }}
-{{ include "open-webui-helper.selectorLabels" . }}
+{{- define "holmesgpt-frontend.labels" -}}
+helm.sh/chart: {{ include "holmesgpt-frontend.chart" . }}
+{{ include "holmesgpt-frontend.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "open-webui-helper.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "open-webui-helper.name" . }}
+{{- define "holmesgpt-frontend.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "holmesgpt-frontend.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "open-webui-helper.serviceAccountName" -}}
+{{- define "holmesgpt-frontend.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "open-webui-helper.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "holmesgpt-frontend.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

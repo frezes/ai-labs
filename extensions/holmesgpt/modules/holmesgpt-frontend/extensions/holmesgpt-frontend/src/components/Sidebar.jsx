@@ -289,10 +289,10 @@ export default function Sidebar({
         
         <SidebarContent>
           <NewChatButtonContainer isOpen={isOpen}>
-            <Button variant="primary" onClick={onStartNewChat}>
-              <PlusIcon />
-              新建对话
-            </Button>
+            <Button variant="primary" onClick={onStartNewChat} minWidth="208px">
+                <PlusIcon />
+                Ask HolmesGPT
+              </Button>
           </NewChatButtonContainer>
           
           <CompactNewChatButton isOpen={isOpen} onClick={onStartNewChat}>

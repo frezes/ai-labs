@@ -33,6 +33,9 @@ dependencies:
   - name: holmes
     tags:
     - extension
+  - name: holmesgpt-frontend
+    tags:
+    - extension
 # installationMode describes how to install subcharts, it can be HostOnly or Multicluster.
 # In Multicluster mode, the subchart with tag `extension` will only be deployed to the host cluster,
 # and the subchart with tag `agent` will be deployed to all selected clusters.
