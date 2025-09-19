@@ -1,0 +1,17 @@
+{
+  "name": "holmesgpt-frontend",
+  "description": "AI Agent for Troubleshooting Cloud-Native Environments.",
+  "author": "frezes",
+  "version": "1.0.0",
+  "homepage": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@kubed/components": "^0.0.0-canary.20250617082329",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.0.0"
+  }
+}

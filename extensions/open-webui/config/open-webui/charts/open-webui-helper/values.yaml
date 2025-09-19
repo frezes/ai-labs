@@ -1,4 +1,0 @@
-openWebUIUrl: "http://open-webui.extension-open-webui.svc:80"
-
-kubesphereAsOIDCProvider:
-  enabeld: true

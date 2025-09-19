@@ -1,0 +1,68 @@
+holmes:
+  certificate: "" # base64 encoded
+  logLevel: INFO
+
+
+  additionalEnvVars: []
+  additional_env_vars: []
+  imagePullSecrets: []
+
+  image: holmes:0.12.4
+  registry: robustadev
+
+  sentryDSN: https://51f9cd9bd2fdee16144db08fc423cd3b@o1120648.ingest.us.sentry.io/4508799804702720
+  enableTelemetry: true
+
+  enableAccountsCreate: true
+
+  createServiceAccount: true
+  customServiceAccountName: ""
+
+  customClusterRoleRules: []
+
+  enablePostProcessing: false
+  postProcessingPrompt: "builtin://generic_post_processing.jinja2"
+  openshift: false
+
+  affinity: {}
+  nodeSelector: ~
+  tolerations: []
+
+  serviceAccount:
+    imagePullSecrets: []
+    annotations: {}
+
+  toolsets:
+    kubernetes/core:
+      enabled: true
+    kubernetes/logs:
+      enabled: true
+    robusta:
+      enabled: true
+    internet:
+      enabled: true
+    prometheus/metrics:
+      enabled: true
+  mcp_servers: {}
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 1024Mi
+    limits:
+      memory: 1024Mi
+
+  additionalVolumes: []
+  additionalVolumeMounts: []
+
+  priorityClassName: ""
+
+  modelList: {}
+
+holmesgpt-fronted:
+  image:
+    registry: docker.io
+    repository: frezes/holmesgpt-frontend
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"

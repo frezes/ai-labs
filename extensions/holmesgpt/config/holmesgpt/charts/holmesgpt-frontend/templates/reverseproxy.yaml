@@ -1,0 +1,16 @@
+apiVersion: extensions.kubesphere.io/v1alpha1
+kind: ReverseProxy
+metadata:
+  name: holmesgpt
+spec:
+  directives:
+    headerUp:
+    - -Authorization
+    stripPathPrefix: /proxy/holmesgpt.dev
+  matcher:
+    method: '*'
+    path: /proxy/holmesgpt.dev/*
+  upstream:
+    url: http://holmesgpt-holmes.extension-holmesgpt.svc:80
+status:
+  state: Available
