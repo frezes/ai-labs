@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-labs-museum
+  namespace: kubesphere-system
+  labels:
+    app: ai-labs-museum
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-labs-museum
+  template:
+    metadata:
+      labels:
+        app: ai-labs-museum
+    spec:
+      containers:
+        - name: ai-labs-museum
+          image: frezes/ai-labs:latest
+          command:
+            - "/chartmuseum"
+            - "--storage-local-rootdir"
+            - "/charts"
+            - "--storage"
+            - "local"
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-labs-museum
+  namespace: kubesphere-system
+spec:
+  selector:
+    app: ai-labs-museum
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+
+---
+apiVersion: kubesphere.io/v1alpha1
+kind: Repository
+metadata:
+  name: ai-labs-museum
+spec:
+  url: http://ai-labs-museum.kubesphere-system.svc
+status:
+  lastSyncTime: null
