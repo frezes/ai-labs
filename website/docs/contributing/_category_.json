@@ -1,0 +1,10 @@
+{
+  "label": "贡献",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "本部分介绍如何为该项目做贡献。"
+  },
+  "collapsible": true,
+  "collapsed": false
+}
