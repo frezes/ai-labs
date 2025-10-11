@@ -1,0 +1,10 @@
+{
+  "label": "扩展组件管理",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "本部分介绍如何在 KubeSphere 平台上管理扩展组件，包括安装、升级、配置和卸载等操作。"
+  },
+  "collapsible": true,
+  "collapsed": false
+}

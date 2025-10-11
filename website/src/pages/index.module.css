@@ -1,0 +1,133 @@
+/* ---------- Layout ---------- */
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background-color: #1b1b1d;
+  color: white;
+  padding: 4rem 1rem 3rem;
+}
+
+.heroInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 300px;
+}
+
+.heroText {
+  max-width: 600px;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  color: #c9c9c9;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.primaryBtn {
+  background-color: #00bfa6;
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.primaryBtn:hover {
+  background-color: #00a893;
+}
+
+.secondaryBtn {
+  background-color: #0078f2;
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.secondaryBtn:hover {
+  background-color: #0064cc;
+}
+
+.heroImage {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.heroImage img {
+  width: 240px;
+  height: auto;
+}
+
+/* ---------- Extensions ---------- */
+.extensions {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #f8f9fb;
+}
+
+.cards {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+
+.logoImage {
+  max-width: 100%;
+  max-height: 50px;
+  object-fit: contain;
+}
+
+.learnMore {
+  display: inline-block;
+  margin-top: 0.25rem;
+  color: #0078f2;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
