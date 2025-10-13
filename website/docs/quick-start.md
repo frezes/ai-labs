@@ -64,7 +64,7 @@ ksbuilder publish extensions/{extension}/config/{extension}
 
 ## 📘 接下来做什么
 
-* [安装扩展](./extensions/installation.md)
+* [安装扩展](./extension-managerment/_category_.json)
 * [查看扩展介绍](../extensions/intro.md)
 
 
