@@ -29,7 +29,7 @@ AI Labs 的目标是：
 
 - [安装 Kubernetes 及 KubeSphere](https://docs.kubesphere.com.cn/)
 - [快速部署 AI Labs](./quick-start.md)
-- [安装扩展组件](./extension-managerment/)
+- [安装扩展组件](./extension-managerment/_category_.json)
 
 
 > 💡 **提示：**  

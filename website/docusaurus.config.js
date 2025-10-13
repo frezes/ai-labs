@@ -36,28 +36,21 @@ const config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
-  // -------------------------------------------------------------------------
-  // 主 preset 配置（默认 docs 模块）
-  // -------------------------------------------------------------------------
   presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          // 默认文档目录
-          path: 'docs',
-          // 文档的 URL 前缀
-          routeBasePath: 'docs',
-          // 指向侧边栏配置文件（无需 sidebarId）
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/frezes/ai-labs/tree/main/website',
+          editUrl:
+            'https://github.com/frezes/ai-labs/tree/main/website',
         },
         blog: {
           showReadingTime: true,
@@ -65,23 +58,22 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // 博客编辑链接
-          editUrl: 'https://github.com/frezes/ai-labs/tree/main/website',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            'https://github.com/frezes/ai-labs/tree/main/website',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
       }),
     ],
   ],
 
-  // -------------------------------------------------------------------------
-  // 新增：第二个文档模块 extensions（独立 sidebar）
-  // -------------------------------------------------------------------------
   plugins: [
     [
       '@docusaurus/plugin-content-docs',
@@ -102,26 +94,23 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/ai-labs.png',
       colorMode: {
         respectPrefersColorScheme: true,
       },
       navbar: {
         title: 'AI Labs',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'AI Labs',
           src: 'img/ai-labs.png',
         },
         items: [
-          // 文档（默认 docs 模块）
           {
             type: 'docSidebar',
-            sidebarId: 'docsSidebar', // 对应 sidebars.js 中的键名
+            sidebarId: 'docsSidebar',
             position: 'left',
             label: '文档',
-            // docsPluginId 可省略，默认指向 preset 的 docs 插件
           },
-          // 扩展组件（extensions 模块）
           {
             type: 'docSidebar',
             sidebarId: 'extensionsSidebar', // 对应 sidebars.js 中的键名
@@ -129,7 +118,12 @@ const config = {
             position: 'left',
             label: '扩展组件',
           },
-          {to: '/blog', label: '博客', position: 'left'},
+          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            href: 'https://github.com/frezes/ai-labs',
+            label: 'GitHub',
+            position: 'right',
+          },
         ],
       },
       footer: {
@@ -140,11 +134,11 @@ const config = {
             items: [
               {
                 label: 'HolmesGPT',
-                to: '/extensions/holmesgpt',
+                to: '/extensions/holmesgpt/intro',
               },
               {
                 label: 'Open WebUI',
-                to: '/extensions/open-webui',
+                to: '/extensions/open-webui/intro',
               },
             ],
           },
@@ -152,8 +146,8 @@ const config = {
             title: '社区',
             items: [
               {
-                label: '微信公众号',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Github Discussions',
+                href: 'https://github.com/frezes/ai-labs/discussions',
               },
             ],
           },
@@ -161,12 +155,8 @@ const config = {
             title: '更多',
             items: [
               {
-                label: '更新日志',
-                to: '/changelog',
-              },
-              {
-                label: '博客',
-                to: '/blog',
+                label: '微信公众号',
+                to: 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=替换biz的值&scene=124#wechat_redirect',
               },
               {
                 label: 'GitHub',
