@@ -1,0 +1,9 @@
+{
+  "label": "JupyterHub",
+  "position": 4,
+  "link": {
+    "type": "generated-index"
+  },
+  "collapsible": true,
+  "collapsed": false
+}

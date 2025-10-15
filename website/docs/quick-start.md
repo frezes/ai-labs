@@ -7,7 +7,6 @@ sidebar_position: 2
 本章节介绍如何在 **KubeSphere** 环境中快速部署 **AI Labs**。  
 你可以选择以下两种方式之一进行安装：
 
----
 
 ## 方式 1：使用 kubectl 部署（推荐）
 
@@ -30,7 +29,7 @@ kubectl get deploy -n kubesphere-system -l app=ai-labs-museum
 > 此方式适合快速安装与功能体验。
 > 系统会自动同步扩展，无需手动推送。
 
----
+
 
 ## 方式 2：手动推送扩展至 KubeSphere 扩展中心（开发者使用）
 
@@ -43,7 +42,7 @@ git clone https://github.com/frezes/ai-labs.git
 cd ai-labs
 ```
 
----
+
 
 ### ⚙️ 步骤 2：构建并发布扩展
 
@@ -60,7 +59,7 @@ ksbuilder publish extensions/{extension}/config/{extension}
 > * `{extension}` 请替换为实际扩展名称（如 `holmesgpt`、`open-webui`、`jupyterhub` 等）。
 > * 推送成功后，扩展将出现在 KubeSphere 控制台的 **扩展中心** 页面。
 
----
+
 
 ## 📘 接下来做什么
 
