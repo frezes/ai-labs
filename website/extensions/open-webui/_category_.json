@@ -1,0 +1,9 @@
+{
+  "label": "Open WebUI",
+  "position": 3,
+  "link": {
+    "type": "generated-index"
+  },
+  "collapsible": true,
+  "collapsed": false
+}
