@@ -1,7 +1,9 @@
 tika-helm
 =========
 
-![lint + install workflow](https://github.com/apache/tika-helm/actions/workflows/lint-test.yaml/badge.svg)
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/apache-tika)](https://artifacthub.io/packages/search?repo=apache-tika)
+
+<div class="artifacthub-widget" data-url="https://artifacthub.io/packages/helm/apache-tika/tika" data-theme="light" data-header="true" data-stars="true" data-responsive="false"><blockquote><p lang="en" dir="ltr"><b>tika</b>: The official Helm chart to deploy Apache Tika on Kubernetes</p>&mdash; Open in <a href="https://artifacthub.io/packages/helm/apache-tika/tika">Artifact Hub</a></blockquote></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 
 A [Helm chart][] to deploy [Apache Tika][] on [Kubernetes][].
 
@@ -21,22 +23,23 @@ will work with the version of Tika you are installing.
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
-- [Requirements](#requirements)
-- [Installing](#installing)
-  - [Install released version using Helm repository](#install-released-version-using-helm-repository)
-  - [Install development version using master branch](#install-development-version-using-master-branch)
-- [Upgrading](#upgrading)
-- [Usage notes](#usage-notes)
-- [Configuration](#configuration)
-  - [Deprecated](#deprecated)
-- [FAQ](#faq)
-- [Contributing](#contributing)
+- [tika-helm](#tika-helm)
+  - [Requirements](#requirements)
+  - [Installing](#installing)
+    - [Install released version using Helm repository](#install-released-version-using-helm-repository)
+    - [Install development version using master branch](#install-development-version-using-master-branch)
+    - [Custom configuration for tika](#custom-configuration-for-tika)
+  - [Upgrading](#upgrading)
+  - [Configuration](#configuration)
+    - [Deprecated](#deprecated)
+  - [Contributing](#contributing)
+  - [More Information](#more-information)
+  - [Authors](#authors)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- Use this to update TOC: -->
 <!-- docker run --rm -it -v $(pwd):/usr/src jorgeandrada/doctoc --github -->
-
 
 ## Requirements
 
@@ -84,32 +87,41 @@ while true; do kubectl --namespace tika-test port-forward $POD_NAME 9998:$CONTAI
 * Install it:
   - with Helm 3: `helm install tika . --set image.tag=latest-full`
 
+### Custom configuration for tika
+
+To use custom [configuration]( https://tika.apache.org/2.9.1/configuring.html) values for apache tika, use the `tikaConfig` key in the `values.yaml`.
+Example:
+```
+tikaConfig: |
+  <?xml version="1.0" encoding="UTF-8"?>
+  <properties>
+    <parsers>
+      <!-- Default Parser for most things, except for 2 mime types -->
+      <parser class="org.apache.tika.parser.DefaultParser">
+        <mime-exclude>image/jpeg</mime-exclude>
+        <mime-exclude>application/pdf</mime-exclude>
+      </parser>
+    </parsers>
+  </properties>
+```
 ## Upgrading
 
-Please always check [CHANGELOG.md][] and [BREAKING_CHANGES.md][] before
-upgrading to a new chart version.
-
-
-## Usage notes
-
-* TODO
-
+Please check `artifacthub.io/changes` in `Chart.yaml` before upgrading.
 
 ## Configuration
 
-| Parameter                      | Description                                                                                                                                                                  | Default                            |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|
-| `...`             | ...                                                                                        | ...               |
+| Parameter | Description | Default |
+| --------- | ----------- | ------- |
+| `...`     | ...         | ...     |
 
-### Deprecated
+## Testing
 
-| Parameter            | Description                                                                                                                                          | Default |
-|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| `...`           | ...                                                                                                    | `...`    |
+```
+helm plugin install https://github.com/helm-unittest/helm-unittest.git
+helm unittest .
+```
 
-## FAQ
-
-None yet...
+See [helm-unittest][] for canonical documentation.
 
 ## Contributing
 
@@ -139,6 +151,7 @@ The code is licensed permissively under the [Apache License v2.0][].
 [CHANGELOG.md]: https://github.com/apache/tika-helm/blob/master/CHANGELOG.md
 [CONTRIBUTING]: https://github.com/apache/tika#contributing-via-github
 [apache/tika]: https://github.com/apache/tika-docker
+[helm-unittest]: https://github.com/helm-unittest/helm-unittest
 [Helm chart]: https://helm.sh/docs/topics/charts/
 [Kubernetes]: https://kubernetes.io/
 [Tika Docker image]: https://hub.docker.com/r/apache/tika/tags?page=1&ordering=last_updated

@@ -1,23 +1,13 @@
 annotations:
   artifacthub.io/category: ai-machine-learning
   artifacthub.io/changes: |
-    - kind: added
-      description: DRA GPU API v1 support
-      links:
-        - name: PR#191
-          url: https://github.com/otwld/ollama-helm/pull/191
-    - kind: added
-      description: add test annotations
-      links:
-        - name: PR#190
-          url: https://github.com/otwld/ollama-helm/pull/190
     - kind: changed
-      description: upgrade app version to 0.11.2
+      description: upgrade app version to 0.12.3
       links:
-        - name: Ollama release v0.11.2
-          url: https://github.com/ollama/ollama/releases/tag/v0.11.2
+        - name: Ollama release v0.12.3
+          url: https://github.com/ollama/ollama/releases/tag/v0.12.3
 apiVersion: v2
-appVersion: 0.11.2
+appVersion: 0.12.3
 description: Get up and running with large language models locally.
 home: https://ollama.ai/
 icon: https://ollama.ai/public/ollama.png
@@ -35,4 +25,4 @@ sources:
 - https://github.com/ollama/ollama
 - https://github.com/otwld/ollama-helm
 type: application
-version: 1.26.0
+version: 1.31.0

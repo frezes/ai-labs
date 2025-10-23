@@ -13,4 +13,4 @@ name: pipelines
 sources:
 - https://github.com/open-webui/helm-charts
 - https://github.com/open-webui/pipelines/pkgs/container/pipelines
-version: 0.7.0
+version: 0.9.0

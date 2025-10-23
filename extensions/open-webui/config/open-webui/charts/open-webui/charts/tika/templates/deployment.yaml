@@ -20,6 +20,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "tika-helm.fullname" . }}
+  namespace: {{ include "tika-helm.namespace" . }}
   labels:
     {{- include "tika-helm.labels" . | nindent 4 }}
 spec:
@@ -48,8 +49,21 @@ spec:
       volumes:
       - name: sec-ctx-vol
         emptyDir: {}
+      {{- if .Values.tikaConfig }}
+      - name: tika-config
+        configMap:
+          name: {{ .Chart.Name }}-config
+          defaultMode: 0777
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
+          {{- if .Values.tikaConfig }}
+          args: ["-c" , "/tika-config/tika-config.xml"]
+          {{- end }}
+          {{- with .Values.env }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -57,24 +71,38 @@ spec:
           volumeMounts:
           - name: sec-ctx-vol
             mountPath: /tmp
+          {{- if .Values.tikaConfig }}
+          - name: tika-config
+            mountPath: /tika-config
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
+            {{- if eq (lower .Values.livenessProbe.scheme) "tcp" }}
+            tcpSocket:
+              port: {{ .Values.service.port }}
+            {{- else }}
             httpGet:
               path: {{if .Values.config.base_url }}{{- with urlParse (tpl .Values.config.base_url .) }}{{ .path }}{{end}}{{else}}/{{end}}
               port: {{ .Values.service.port }}
               scheme: {{ .Values.livenessProbe.scheme | default "http" }}
+            {{- end }}
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds | default 15 }}
             timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds | default 30 }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold | default 20 }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds | default 5 }}
           readinessProbe:
+            {{- if eq (lower .Values.readinessProbe.scheme) "tcp" }}
+            tcpSocket:
+              port: {{ .Values.service.port }}
+            {{- else }}
             httpGet:
               path: {{if .Values.config.base_url }}{{- with urlParse (tpl .Values.config.base_url .) }}{{ .path }}{{end}}{{else}}/{{end}}
               port: {{ .Values.service.port  }}
               scheme: {{ .Values.readinessProbe.scheme | default "http" }}
+            {{- end }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds | default 15 }}
             timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds | default 30 }}
             failureThreshold: {{ .Values.readinessProbe.failureThreshold | default 20 }}
@@ -91,5 +119,9 @@ spec:
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
         {{- toYaml . | nindent 8 }}
       {{- end }}

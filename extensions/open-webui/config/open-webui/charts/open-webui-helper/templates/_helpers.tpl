@@ -1,19 +1,7 @@
 {{/*
-Allow the release namespace to be overridden for multi-namespace deployments in combined charts
-*/}}
-{{- define "tika-helm.namespace" -}}
-  {{- if .Values.namespaceOverride -}}
-    {{- .Values.namespaceOverride -}}
-  {{- else -}}
-    {{- .Release.Namespace -}}
-  {{- end -}}
-{{- end -}}
-
-
-{{/*
 Expand the name of the chart.
 */}}
-{{- define "tika-helm.name" -}}
+{{- define "open-webui-helper.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -22,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "tika-helm.fullname" -}}
+{{- define "open-webui-helper.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -38,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "tika-helm.chart" -}}
+{{- define "open-webui-helper.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "tika-helm.labels" -}}
-helm.sh/chart: {{ include "tika-helm.chart" . }}
-{{ include "tika-helm.selectorLabels" . }}
+{{- define "open-webui-helper.labels" -}}
+helm.sh/chart: {{ include "open-webui-helper.chart" . }}
+{{ include "open-webui-helper.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -57,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "tika-helm.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "tika-helm.name" . }}
+{{- define "open-webui-helper.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "open-webui-helper.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "tika-helm.serviceAccountName" -}}
+{{- define "open-webui-helper.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "tika-helm.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "open-webui-helper.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

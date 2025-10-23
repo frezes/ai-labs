@@ -16,18 +16,13 @@
 # under the License.
 
 ---
+{{- if .Values.tikaConfig }}
 apiVersion: v1
-kind: Pod
+kind: ConfigMap
 metadata:
-  name: "{{ include "tika-helm.fullname" . }}-test-connection"
-  labels:
-    {{- include "tika-helm.labels" . | nindent 4 }}
-  annotations:
-    "helm.sh/hook": test
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['{{ include "tika-helm.fullname" . }}:{{ .Values.service.port }}']
-  restartPolicy: Never
+  name: {{ .Chart.Name }}-config
+  namespace: {{ include "tika-helm.namespace" . }}
+data:
+  tika-config.xml: |-
+{{ .Values.tikaConfig | indent 4 }}
+{{- end }}

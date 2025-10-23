@@ -1,6 +1,6 @@
 affinity: {}
 autoscaling:
-  apiVersion: autoscaling/v2beta1
+  apiVersion: autoscaling/v2
   enabled: false
   maxReplicas: 100
   minReplicas: 1
@@ -12,7 +12,7 @@ fullnameOverride: ""
 image:
   pullPolicy: IfNotPresent
   repository: apache/tika
-  tag: 2.9.0.0
+  tag: 3.2.2.0-full
 imagePullSecrets: []
 ingress:
   annotations: {}
@@ -28,6 +28,7 @@ livenessProbe:
   scheme: HTTP
   timeoutSeconds: 30
 nameOverride: ""
+namespaceOverride: ""
 networkPolicy:
   allowExternal: false
   enabled: false
@@ -65,3 +66,4 @@ serviceAccount:
   create: true
   name: ""
 tolerations: []
+topologySpreadConstraints: []

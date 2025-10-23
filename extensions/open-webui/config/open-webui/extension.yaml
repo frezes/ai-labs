@@ -1,6 +1,6 @@
 apiVersion: kubesphere.io/v1alpha1
 name: open-webui
-version: 0.6.18
+version: 0.6.34
 displayName:
   zh: Open WebUI
   en: Open WebUI
@@ -14,7 +14,7 @@ home: https://kubesphere.io
 sources:
   - https://github.com/kubesphere
 kubeVersion: ">=1.19.0-0"
-ksVersion: ">=4.2.0-0"
+ksVersion: ">=4.1.0-0"
 maintainers:
   - name: "kubesphere"
     email: "kubesphere@yunify.com"
@@ -33,6 +33,9 @@ dependencies:
   - name: open-webui
     tags:
     - extension
+  - name: open-webui-helper
+    tags:
+    - extensions
 # installationMode describes how to install subcharts, it can be HostOnly or Multicluster.
 # In Multicluster mode, the subchart with tag `extension` will only be deployed to the host cluster,
 # and the subchart with tag `agent` will be deployed to all selected clusters.
