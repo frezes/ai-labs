@@ -6,6 +6,7 @@ on:
       - '.extension-museum/**'    # 只要 .extension-museum 下有变化就触发
     tags:
       - '*'                      # 打 tag 时也触发
+  workflow_dispatch: 
 
 jobs:
   docker:
