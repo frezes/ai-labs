@@ -7,7 +7,7 @@ holmes:
   additional_env_vars: []
   imagePullSecrets: []
 
-  image: holmes:0.12.4
+  image: holmes:0.16.1
   registry: robustadev
 
   sentryDSN: https://51f9cd9bd2fdee16144db08fc423cd3b@o1120648.ingest.us.sentry.io/4508799804702720
@@ -48,9 +48,9 @@ holmes:
   resources:
     requests:
       cpu: 100m
-      memory: 1024Mi
+      memory: 2048Mi
     limits:
-      memory: 1024Mi
+      memory: 2048Mi
 
   additionalVolumes: []
   additionalVolumeMounts: []
@@ -59,10 +59,13 @@ holmes:
 
   modelList: {}
 
-holmesgpt-fronted:
+holmesgpt-frontend:
   image:
     registry: docker.io
     repository: frezes/holmesgpt-frontend
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "latest"
+    tag: "v0.2.0"
+
+holmesgpt-helper:
+  fullnameOverride: holmesgpt-proxy

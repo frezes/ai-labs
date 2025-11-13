@@ -13,7 +13,7 @@ image:
   repository: frezes/holmesgpt-frontend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: ""
 
 nameOverride: ""
 fullnameOverride: ""

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "holmesgpt-helper.fullname" . }}
+  labels:
+    {{- include "holmesgpt-helper.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "holmesgpt-helper.selectorLabels" . | nindent 4 }}
