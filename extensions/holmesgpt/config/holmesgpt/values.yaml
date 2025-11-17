@@ -65,7 +65,7 @@ holmesgpt-frontend:
     repository: frezes/holmesgpt-frontend
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "v0.2.0"
+    # tag: ""
 
 holmesgpt-helper:
   fullnameOverride: holmesgpt-proxy
