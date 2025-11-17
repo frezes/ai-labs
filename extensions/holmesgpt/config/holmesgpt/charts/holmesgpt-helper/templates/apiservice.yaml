@@ -1,0 +1,10 @@
+kind: APIService
+apiVersion: extensions.kubesphere.io/v1alpha1
+metadata:
+  name: v1.holmesgpt.dev
+spec:
+  group: holmesgpt.dev
+  url: http://{{ include "holmesgpt-helper.fullname" . }}.{{ .Release.Namespace }}.svc:80
+  version: v1
+status:
+  state: Available
